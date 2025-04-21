@@ -35,7 +35,7 @@ int main() {
 
     cout << "enter file name: " << endl;
     cin >> filename;
-    ifstream codeInputFile(filename);
+    ifstream codeInputFile("./"+filename);
 
     if(codeInputFile.is_open()){
         
@@ -45,7 +45,6 @@ int main() {
         
     }
     codeInputFile.close();
-
 
     while(pc >= 0 && pc < lines.size()){
         int position = lines.at(pc).find(" ");
@@ -71,7 +70,12 @@ int main() {
         else if(instruction == "FARM"){
             char input;
             cin >> input;
-            stack.push_front(int(input));
+            if(input == '0'){
+                stack.push_front(0);
+            }else{
+                stack.push_front(int(input));
+            }
+            
             
         }
         //PLACE - (pops the top value of the stack and prints it as an ascii character)
